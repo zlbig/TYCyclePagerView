@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24A0EE2F21DF4A2D00936BED /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A0EE2E21DF4A2D00936BED /* CustomViewController.m */; };
+		24A0EE3221DF52A700936BED /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A0EE3121DF52A700936BED /* NewViewController.m */; };
 		2B9C0EF61F0B2F32009BC0BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C0EF51F0B2F32009BC0BD /* main.m */; };
 		2B9C0EF91F0B2F32009BC0BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C0EF81F0B2F32009BC0BD /* AppDelegate.m */; };
 		2B9C0EFC1F0B2F32009BC0BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C0EFB1F0B2F32009BC0BD /* ViewController.m */; };
@@ -31,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24A0EE2D21DF4A2D00936BED /* CustomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
+		24A0EE2E21DF4A2D00936BED /* CustomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
+		24A0EE3021DF52A700936BED /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		24A0EE3121DF52A700936BED /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		2B9C0EF11F0B2F32009BC0BD /* TYCyclePagerViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYCyclePagerViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B9C0EF51F0B2F32009BC0BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B9C0EF71F0B2F32009BC0BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,6 +104,10 @@
 				2B9C0EF81F0B2F32009BC0BD /* AppDelegate.m */,
 				2B9C0EFA1F0B2F32009BC0BD /* ViewController.h */,
 				2B9C0EFB1F0B2F32009BC0BD /* ViewController.m */,
+				24A0EE2D21DF4A2D00936BED /* CustomViewController.h */,
+				24A0EE2E21DF4A2D00936BED /* CustomViewController.m */,
+				24A0EE3021DF52A700936BED /* NewViewController.h */,
+				24A0EE3121DF52A700936BED /* NewViewController.m */,
 				2B9C0F231F0B2F96009BC0BD /* TYCyclePagerViewCell.h */,
 				2B9C0F241F0B2F96009BC0BD /* TYCyclePagerViewCell.m */,
 				2B9C0EFD1F0B2F32009BC0BD /* Main.storyboard */,
@@ -188,7 +198,7 @@
 				TargetAttributes = {
 					2B9C0EF01F0B2F32009BC0BD = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = ZW52Q3KXX4;
+						DevelopmentTeam = 34E66JVE9F;
 						ProvisioningStyle = Automatic;
 					};
 					2B9C0F091F0B2F32009BC0BD = {
@@ -245,8 +255,10 @@
 				2B9C0EFC1F0B2F32009BC0BD /* ViewController.m in Sources */,
 				2B9C0F221F0B2F62009BC0BD /* TYPageControl.m in Sources */,
 				2B9C0F211F0B2F62009BC0BD /* TYCyclePagerView.m in Sources */,
+				24A0EE2F21DF4A2D00936BED /* CustomViewController.m in Sources */,
 				2B9C0EF91F0B2F32009BC0BD /* AppDelegate.m in Sources */,
 				2B9C0F251F0B2F96009BC0BD /* TYCyclePagerViewCell.m in Sources */,
+				24A0EE3221DF52A700936BED /* NewViewController.m in Sources */,
 				2B9C0F201F0B2F62009BC0BD /* TYCyclePagerTransformLayout.m in Sources */,
 				2B9C0EF61F0B2F32009BC0BD /* main.m in Sources */,
 			);
@@ -386,12 +398,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZW52Q3KXX4;
+				DEVELOPMENT_TEAM = 34E66JVE9F;
 				INFOPLIST_FILE = TYCyclePagerViewDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tany.TYCyclePagerViewDemo2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rv2go.rvlifeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -399,12 +412,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZW52Q3KXX4;
+				DEVELOPMENT_TEAM = 34E66JVE9F;
 				INFOPLIST_FILE = TYCyclePagerViewDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tany.TYCyclePagerViewDemo2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rv2go.rvlifeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

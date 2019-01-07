@@ -8,6 +8,12 @@
 
 #import "TYCyclePagerTransformLayout.h"
 
+#ifdef DEBUG
+#define SLog(FORMAT, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define SLog(...)
+#endif
+
 typedef NS_ENUM(NSUInteger, TYTransformLayoutItemDirection) {
     TYTransformLayoutItemLeft,
     TYTransformLayoutItemCenter,
@@ -90,6 +96,15 @@ typedef NS_ENUM(NSUInteger, TYTransformLayoutItemDirection) {
 - (TYTransformLayoutItemDirection)directionWithCenterX:(CGFloat)centerX {
     TYTransformLayoutItemDirection direction= TYTransformLayoutItemRight;
     CGFloat contentCenterX = self.collectionView.contentOffset.x + CGRectGetWidth(self.collectionView.frame)/2;
+    if (_layout.layoutType == TYCyclePagerTransformLayoutTwoBigSmall) {
+        centerX += 30;
+        if (ABS(centerX - contentCenterX) < 10) {
+            direction = TYTransformLayoutItemCenter;
+        }else if (centerX - contentCenterX < 0) {
+            direction = TYTransformLayoutItemLeft;
+        }
+        return direction;
+    }
     if (ABS(centerX - contentCenterX) < 0.5) {
         direction = TYTransformLayoutItemCenter;
     }else if (centerX - contentCenterX < 0) {
@@ -139,13 +154,20 @@ typedef NS_ENUM(NSUInteger, TYTransformLayoutItemDirection) {
 - (void)initializeTransformAttributes:(UICollectionViewLayoutAttributes *)attributes layoutType:(TYCyclePagerTransformLayoutType)layoutType {
     switch (layoutType) {
         case TYCyclePagerTransformLayoutLinear:
+        {
             [self applyLinearTransformToAttributes:attributes scale:_layout.minimumScale alpha:_layout.minimumAlpha];
+        }
             break;
         case TYCyclePagerTransformLayoutCoverflow:
         {
             [self applyCoverflowTransformToAttributes:attributes angle:_layout.maximumAngle alpha:_layout.minimumAlpha];
-            break;
         }
+            break;
+        case TYCyclePagerTransformLayoutTwoBigSmall:
+        {            
+            [self applyTwoBigSmallTransformToAttributes:attributes scale:_layout.minimumScale alpha:_layout.minimumAlpha];
+        }
+            break;
         default:
             break;
     }
@@ -159,9 +181,61 @@ typedef NS_ENUM(NSUInteger, TYTransformLayoutItemDirection) {
         case TYCyclePagerTransformLayoutCoverflow:
             [self applyCoverflowTransformToAttributes:attributes];
             break;
+        case TYCyclePagerTransformLayoutTwoBigSmall:
+            [self applyTwoBigSmallTransformToAttributes:attributes];
+            break;
         default:
             break;
     }
+}
+
+#pragma mark - TwoBigSmallTransform
+- (void)applyTwoBigSmallTransformToAttributes:(UICollectionViewLayoutAttributes *)attributes {
+    CGFloat collectionViewWidth = self.collectionView.frame.size.width;
+    if (collectionViewWidth <= 0) {
+        return;
+    }
+    
+    CGFloat x = self.collectionView.contentOffset.x + 30;
+    CGFloat delta = ABS(attributes.frame.origin.x - x);
+    CGFloat scale = MAX(1 - delta/collectionViewWidth*_layout.rateOfChange, _layout.minimumScale);
+    CGFloat alpha = MAX(1 - delta/collectionViewWidth, 0.0);
+    
+    TYTransformLayoutItemDirection direction = [self directionWithCenterX:attributes.center.x];
+    if (direction == TYTransformLayoutItemLeft) {
+        CGFloat minAlpha = 1 - (_layout.itemSize.width + _layout.itemSpacing) / collectionViewWidth;
+        if (alpha <= minAlpha) {            
+            alpha = 0.0;
+        }
+    } else {
+        alpha = 1.0;
+    }
+    
+    [self applyTwoBigSmallTransformToAttributes:attributes scale:scale alpha:alpha];
+}
+
+- (void)applyTwoBigSmallTransformToAttributes:(UICollectionViewLayoutAttributes *)attributes scale:(CGFloat)scale alpha:(CGFloat)alpha {
+    TYTransformLayoutItemDirection direction = [self directionWithCenterX:attributes.center.x];
+    CGAffineTransform transform = CGAffineTransformMakeScale(scale, scale);
+    if (_layout.adjustSpacingWhenScroling) {
+        CGFloat translate = 0;
+        switch (direction) {
+            case TYTransformLayoutItemLeft:
+                translate = 1.15 * attributes.size.width*(1-scale)/2;
+                break;
+            case TYTransformLayoutItemRight:
+                translate = -1.15 * attributes.size.width*(1-scale)/2;
+                break;
+            default:
+                // center
+                scale = 1.0;
+                alpha = 1.0;
+                break;
+        }
+        transform = CGAffineTransformTranslate(transform,translate, 0);
+    }
+    attributes.transform = transform;
+    attributes.alpha = alpha;
 }
 
 #pragma mark - LinearTransform

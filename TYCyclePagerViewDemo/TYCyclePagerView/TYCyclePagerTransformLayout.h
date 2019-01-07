@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, TYCyclePagerTransformLayoutType) {
     TYCyclePagerTransformLayoutNormal,
     TYCyclePagerTransformLayoutLinear,
     TYCyclePagerTransformLayoutCoverflow,
+    TYCyclePagerTransformLayoutTwoBigSmall, /// 水平方向
 };
 
 @class TYCyclePagerTransformLayout;

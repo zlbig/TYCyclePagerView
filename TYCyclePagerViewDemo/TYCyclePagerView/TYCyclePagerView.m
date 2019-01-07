@@ -122,6 +122,7 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
 #pragma mark - timer
 
 - (void)addTimer {
+    return;
     if (_timer || _autoScrollInterval <= 0) {
         return;
     }
@@ -387,7 +388,7 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
     if (_numberOfItems <= 0) {
         return TYMakeIndexSection(0, 0);
     }
-     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)_collectionView.collectionViewLayout;
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)_collectionView.collectionViewLayout;
     CGFloat leftEdge = _isInfiniteLoop ? _layout.sectionInset.left : _layout.onlyOneSectionInset.left;
     CGFloat width = CGRectGetWidth(_collectionView.frame);
     CGFloat middleOffset = offsetX + width/2;
@@ -418,10 +419,15 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
     CGFloat width = CGRectGetWidth(_collectionView.frame);
     CGFloat itemWidth = layout.itemSize.width + layout.minimumInteritemSpacing;
     CGFloat offsetX = 0;
+    
     if (!_isInfiniteLoop && !_layout.itemHorizontalCenter && indexSection.index == _numberOfItems - 1) {
         offsetX = leftEdge + itemWidth*(indexSection.index + indexSection.section*_numberOfItems) - (width - itemWidth) -  layout.minimumInteritemSpacing + rightEdge;
     }else {
         offsetX = leftEdge + itemWidth*(indexSection.index + indexSection.section*_numberOfItems) - layout.minimumInteritemSpacing/2 - (width - itemWidth)/2;
+    }
+    
+    if (_layout.layoutType == TYCyclePagerTransformLayoutTwoBigSmall) {
+        return itemWidth*(indexSection.index + indexSection.section*_numberOfItems) - 30;
     }
     return MAX(offsetX, 0);
 }
@@ -443,7 +449,7 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
     }
 }
 
-- (void)recyclePagerViewIfNeed {
+- (void)recyclePagerViewIfNeed {    
     if (!_isInfiniteLoop) {
         return;
     }
