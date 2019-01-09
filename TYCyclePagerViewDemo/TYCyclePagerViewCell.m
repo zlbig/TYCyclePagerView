@@ -10,6 +10,7 @@
 
 @interface TYCyclePagerViewCell ()
 @property (nonatomic, weak) UILabel *label;
+@property (nonatomic, strong) UIImageView *bgImageView;
 @end
 
 @implementation TYCyclePagerViewCell
@@ -38,11 +39,15 @@
     label.font = [UIFont systemFontOfSize:18];
     [self addSubview:label];
     _label = label;
+    
+    _bgImageView = [[UIImageView alloc] init];
+    [self.contentView addSubview:_bgImageView];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     _label.frame = self.bounds;
+    _bgImageView.frame = self.contentView.bounds;
 }
 
 @end

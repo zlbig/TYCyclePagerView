@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		24A0EE2F21DF4A2D00936BED /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A0EE2E21DF4A2D00936BED /* CustomViewController.m */; };
 		24A0EE3221DF52A700936BED /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A0EE3121DF52A700936BED /* NewViewController.m */; };
+		24A9A1EA21E4745000973DAD /* 321.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A9A1E921E4745000973DAD /* 321.png */; };
 		2B9C0EF61F0B2F32009BC0BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C0EF51F0B2F32009BC0BD /* main.m */; };
 		2B9C0EF91F0B2F32009BC0BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C0EF81F0B2F32009BC0BD /* AppDelegate.m */; };
 		2B9C0EFC1F0B2F32009BC0BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C0EFB1F0B2F32009BC0BD /* ViewController.m */; };
@@ -37,6 +38,7 @@
 		24A0EE2E21DF4A2D00936BED /* CustomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 		24A0EE3021DF52A700936BED /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		24A0EE3121DF52A700936BED /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+		24A9A1E921E4745000973DAD /* 321.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 321.png; sourceTree = "<group>"; };
 		2B9C0EF11F0B2F32009BC0BD /* TYCyclePagerViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYCyclePagerViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B9C0EF51F0B2F32009BC0BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B9C0EF71F0B2F32009BC0BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				2B9C0F241F0B2F96009BC0BD /* TYCyclePagerViewCell.m */,
 				2B9C0EFD1F0B2F32009BC0BD /* Main.storyboard */,
 				2B9C0F001F0B2F32009BC0BD /* Assets.xcassets */,
+				24A9A1E921E4745000973DAD /* 321.png */,
 				2B9C0F021F0B2F32009BC0BD /* LaunchScreen.storyboard */,
 				2B9C0F051F0B2F32009BC0BD /* Info.plist */,
 				2B9C0EF41F0B2F32009BC0BD /* Supporting Files */,
@@ -232,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24A9A1EA21E4745000973DAD /* 321.png in Resources */,
 				2B9C0F041F0B2F32009BC0BD /* LaunchScreen.storyboard in Resources */,
 				2B9C0F011F0B2F32009BC0BD /* Assets.xcassets in Resources */,
 				2B9C0EFF1F0B2F32009BC0BD /* Main.storyboard in Resources */,

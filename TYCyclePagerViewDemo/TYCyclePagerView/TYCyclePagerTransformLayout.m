@@ -204,7 +204,7 @@ typedef NS_ENUM(NSUInteger, TYTransformLayoutItemDirection) {
     TYTransformLayoutItemDirection direction = [self directionWithCenterX:attributes.center.x];
     if (direction == TYTransformLayoutItemLeft) {
         CGFloat minAlpha = 1 - (_layout.itemSize.width + _layout.itemSpacing) / collectionViewWidth;
-        if (alpha <= minAlpha) {            
+        if (alpha <= minAlpha + 0.1) { // + 0.1 加快隐藏视觉速率
             alpha = 0.0;
         }
     } else {

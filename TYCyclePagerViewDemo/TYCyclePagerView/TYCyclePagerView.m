@@ -90,7 +90,7 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
 }
 
 - (void)addCollectionView {
-    TYCyclePagerTransformLayout *layout = [[TYCyclePagerTransformLayout alloc]init];
+    TYCyclePagerTransformLayout *layout = [[TYCyclePagerTransformLayout alloc] init];
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
     layout.delegate = _delegateFlags.applyTransformToAttributes ? self : nil;;
     collectionView.backgroundColor = [UIColor clearColor];
@@ -103,6 +103,9 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
     }
     collectionView.showsHorizontalScrollIndicator = NO;
     collectionView.showsVerticalScrollIndicator = NO;
+    if (@available(iOS 11.0, *)) {
+        collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     [self addSubview:collectionView];
     _collectionView = collectionView;
 }
@@ -121,8 +124,7 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
 
 #pragma mark - timer
 
-- (void)addTimer {
-    return;
+- (void)addTimer {    
     if (_timer || _autoScrollInterval <= 0) {
         return;
     }
@@ -449,7 +451,7 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
     }
 }
 
-- (void)recyclePagerViewIfNeed {    
+- (void)recyclePagerViewIfNeed {
     if (!_isInfiniteLoop) {
         return;
     }

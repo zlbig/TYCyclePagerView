@@ -101,8 +101,14 @@
 - (UICollectionViewCell *)pagerView:(TYCyclePagerView *)pagerView cellForItemAtIndex:(NSInteger)index {
     TYCyclePagerViewCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndex:index];
     cell.backgroundColor = _datas[index];
-    cell.label.text = [NSString stringWithFormat:@"index->%ld",index];
-    cell.layer.cornerRadius = 5.0;
+    if (index % 2) {
+        cell.bgImageView.image = [UIImage imageNamed:@"321"];
+        cell.label.text = nil;
+    } else {
+        cell.label.text = [NSString stringWithFormat:@"index->%ld",index];
+        cell.bgImageView.image = nil;
+    }
+    cell.layer.cornerRadius = 10.0;
     return cell;
 }
 
@@ -119,8 +125,7 @@
 
 - (void)pagerView:(TYCyclePagerView *)pageView didScrollFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
     _pageControl.currentPage = toIndex;
-    //[_pageControl setCurrentPage:newIndex animate:YES];
-    NSLog(@"%ld ->  %ld",fromIndex,toIndex);
+    //[_pageControl setCurrentPage:newIndex animate:YES];    
 }
 
 - (void)pageControlValueChangeAction:(TYPageControl *)sender {
